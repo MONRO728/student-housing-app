@@ -9,3 +9,6 @@ uvicorn
 pydantic
 python-dotenv
 google-generativeai
+gunicorn
+whitenoise
+dj-database-url
