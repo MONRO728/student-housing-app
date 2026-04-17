@@ -1,0 +1,11 @@
+Django>=5.0
+djangorestframework
+django-cors-headers
+django-filter
+djangorestframework-simplejwt
+pillow
+psycopg2-binary
+uvicorn
+pydantic
+python-dotenv
+google-generativeai

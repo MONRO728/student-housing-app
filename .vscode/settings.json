@@ -1,0 +1,17 @@
+{
+    "css.lint.unknownAtRules": "ignore",
+    "python.defaultInterpreterPath": ".venv\\Scripts\\python.exe",
+    "python.envFile": "${workspaceFolder}/.env",
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}/backend",
+        "c:/Users/user/OneDrive/Рабочий стол/house'/backend"
+    ],
+    "python.analysis.sourceRoots": [
+        "${workspaceFolder}/backend"
+    ],
+    "python.analysis.indexing": true,
+    "python.languageServer": "Jedi",
+    "files.associations": {
+        "*.css": "tailwindcss"
+    }
+}

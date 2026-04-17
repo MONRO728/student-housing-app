@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-light: #8B5CF6;
+  --color-primary: #6D28D9;
+  --color-primary-dark: #5B21B6;
+  --color-secondary: #1E2022;
+  --font-sans: "Inter", "sans-serif";
+}
+
+:root {
+  --primary: #6D28D9;
+  --secondary: #1E2022;
+}
+
+body {
+  @apply bg-gray-50 text-secondary font-sans;
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Custom transitions */
+.transition-all {
+  @apply ease-in-out duration-300;
+}
+
+/* Home Section Titles */
+.section-title {
+  @apply text-3xl font-bold mb-8 text-center sm:text-left;
+}
