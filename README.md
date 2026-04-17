@@ -1,43 +1,48 @@
-# TalabaUy - Student Housing Platform
+# TalabaUy - Talabalar uchun uy-joy platformasi
 
-TalabaUy is a modern web application designed to help students in Uzbekistan find affordable, comfortable, and convenient housing near their universities.
+TalabaUy — O'zbekistonda talabalarga o'z universitetlariga yaqin, arzon va qulay ijaraga uylar va xonalarni topishga yordam beruvchi zamonaviy veb-dastur.
 
-## Features
-- 🏠 **Property Search & Filters**: Search for student apartments, private rooms, or shared rooms.
-- 🤖 **AI Chatbot**: Integrated Google Gemini AI to assist users in searching for properties in natural language (Uzbek).
-- 📍 **Maps Integration**: Interactive map to view property locations.
-- 🔐 **Secure Authentication**: User registration and login system with JWT.
-- 📱 **Responsive Design**: Mobile-friendly user interface built with React and Tailwind CSS.
-- 🛠️ **Admin Dashboard**: Manage properties, users, and bookings easily.
+## 🌟 Asosiy Imkoniyatlar
+- 🏠 **Uy qidirish va Filtrlash**: Talabalar uchun kvartiralar, shaxsiy yoki umumiy xonalarni qulay tarzda qidirish.
+- 🤖 **Sun'iy Intellekt Chatboti**: Saytning o'zida Google Gemini AI (2.5 Flash) yordamida uylarni o'zbek tilida (oddiy suhbatlashish orqali) qidirish qobiliyati. Chatbot bevosita ma'lumotlar bazasiga ulangan.
+- 📍 **Xarita**: Uylarning qayerda joylashganini interaktiv xaritada ko'rish.
+- 🔐 **Xavfsiz tizim**: Foydalanuvchilarning ro'yxatdan o'tishi va tizimga kirishi (JWT autentifikatsiyasi).
+- 📱 **Qulay dizayn (Responsive)**: Telefon, planshet va kompyuterlarda birdek chiroyli ishlash imkoniyati (React va Tailwind CSS).
+- 🛠️ **Admin Panel**: Uylar, foydalanuvchilar va buyurtmalarni oson boshqarish.
 
-## Tech Stack
-- **Frontend**: React, Tailwind CSS, Vite
-- **Backend**: Python, Django, Django REST Framework
-- **Database**: SQLite (Development)
-- **AI Integration**: Google Generative AI (Gemini 2.5 Flash)
+## 🚀 Qanday ishga tushiriladi?
 
-## Setup Instructions
+Loyihani ishga tushirish uchun qiyin kodlar yozish shart emas! Maxsus yordamchi fayl tayyorlab qo'yilgan.
 
-### 1. Backend Setup
+### Bitta tugma bilan ishga tushirish:
+Loyiha papkasidagi **`ishga-tushirish.bat`** fayli ustiga ikki marta bosing. Ushbu fayl o'zi avtomatik tarzda:
+1. Orqa fon (Backend) serverini yoqadi.
+2. Old fon (Frontend) serverini yoqadi.
+3. Hammasi tayyor bo'lgach brauzerda manzillarni chiqaradi:
+   - **Vebsayt:** `http://localhost:5173`
+   - **Admin Panel:** `http://localhost:8000/admin`
+
+### Qo'lda ishga tushirish (Dasturchilar uchun)
+**Backend (Django):**
 ```bash
 cd backend
 python -m venv .venv
-source .venv/Scripts/activate  # Windows
+.venv\Scripts\activate
 pip install -r requirements.txt
-python manage.py migrate
 python manage.py runserver
 ```
 
-### 2. Frontend Setup
+**Frontend (React):**
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
 
-## Environment Variables
-Create a `.env` file in the root directory:
+## 🔐 Xavfsizlik va API kalitlari
+Loyihaning asosiy papkasida `.env` nomli fayl yaratilgan bo'lishi kerak. Uning ichida xavfsizlik kalitlari va Chatbot ishlashi uchun Gemini API kaliti kiritiladi:
 ```env
-GEMINI_API_KEY=your_gemini_api_key_here
-DJANGO_SECRET_KEY=your_secret_key_here
+GEMINI_API_KEY=sizning_gemini_api_kalitingiz
+DJANGO_SECRET_KEY=maxfiy_kalit
 ```
+*(Eslatma: `.env` fayli maxfiylikni saqlash maqsadida GitHub ga yuklanmaydi, uni o'zingiz qo'lda kiritishingiz kerak).*
