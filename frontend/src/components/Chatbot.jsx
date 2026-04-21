@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { X, Send, User, Bot, Loader2 } from 'lucide-react';
+import api from '../api';
 
 const Chatbot = ({ isOpen, onClose }) => {
   const [messages, setMessages] = useState([
@@ -39,19 +40,8 @@ const Chatbot = ({ isOpen, onClose }) => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8000/api/core/chat/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ message: userMessage.text }),
-      });
-
-      if (!response.ok) {
-        throw new Error('API request failed');
-      }
-
-      const data = await response.json();
+      const response = await api.post('/core/chat/', { message: userMessage.text });
+      const data = response.data;
       
       const botMessage = {
         id: Date.now() + 1,
