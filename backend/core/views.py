@@ -5,7 +5,8 @@ from django.core.mail import send_mail
 from django.conf import settings
 import logging
 import os
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 
 logger = logging.getLogger(__name__)
 
@@ -101,19 +102,20 @@ class ChatBotView(APIView):
             return Response({"error": "API Key is missing"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
             
         try:
-            genai.configure(api_key=api_key)
-            model = genai.GenerativeModel(
-                "gemini-2.5-flash",
-                tools=[search_properties],
-                system_instruction=(
-                    "Siz TalabaUy platformasining aqlli yordamchisisiz. "
-                    "Foydalanuvchi uylar, narxlar yoki shaharlar haqida so'rasa, "
-                    "albatta 'search_properties' asbobidan (tool) foydalanib bazadan qidiring. "
-                    "Topilgan uylarni chiroyli ro'yxat qilib (o'zbek tilida) foydalanuvchiga taqdim eting. "
-                    "Narxlarni so'mda o'qishli formatda yozing (masalan, 1 500 000 so'm)."
-                )
+            client = genai.Client(api_key=api_key)
+            chat = client.chats.create(
+                model="gemini-2.5-flash",
+                config=types.GenerateContentConfig(
+                    tools=[search_properties],
+                    system_instruction=(
+                        "Siz TalabaUy platformasining aqlli yordamchisisiz. "
+                        "Foydalanuvchi uylar, narxlar yoki shaharlar haqida so'rasa, "
+                        "albatta 'search_properties' asbobidan (tool) foydalanib bazadan qidiring. "
+                        "Topilgan uylarni chiroyli ro'yxat qilib (o'zbek tilida) foydalanuvchiga taqdim eting. "
+                        "Narxlarni so'mda o'qishli formatda yozing (masalan, 1 500 000 so'm)."
+                    ),
+                ),
             )
-            chat = model.start_chat(enable_automatic_function_calling=True)
             response = chat.send_message(message)
             return Response({"reply": response.text}, status=status.HTTP_200_OK)
         except Exception as e:
