@@ -10,6 +10,22 @@ from google.genai import types
 
 logger = logging.getLogger(__name__)
 
+
+class RootView(APIView):
+    def get(self, request):
+        return Response({
+            "message": "Welcome to the TalabaUy Student Housing API",
+            "endpoints": {
+                "chat": "/api/core/chat/",
+                "contact": "/api/core/contact/",
+                "listings": "/api/listings/",
+                "bookings": "/api/bookings/",
+                "users": "/api/users/",
+                "admin": "/admin/",
+            }
+        }, status=status.HTTP_200_OK)
+
+
 class ContactView(APIView):
     def post(self, request):
         name = request.data.get('name')
